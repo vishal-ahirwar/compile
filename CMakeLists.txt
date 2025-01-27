@@ -14,8 +14,10 @@ string(TIMESTAMP CURRENT_YEAR "%Y")
 set(COPYRIGHT "Copyright(c) ${CURRENT_YEAR} ${COMPANY}.")
 include_directories(src ${CMAKE_BINARY_DIR})
 configure_file(compileconfig.h.in compileconfig.h)
+add_subdirectory(external/fmt)
 #@find Warning: Do not remove this line
 file(GLOB SOURCES "src/*.cpp" "src/*.hpp" "src/*.hxx" "src/*.h" "src/*.cc" "src/*.cxx")
 add_executable(${PROJECT_NAME} ${SOURCES})
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 #@link Warning: Do not remove this line
+target_link_libraries(${PROJECT_NAME} PRIVATE fmt::fmt)

@@ -22,14 +22,14 @@ int main(int argc, char *argv[])
         if (Utility::isThisInputFile(path))
             files.push_back(path);
     };
-    fprintf(stderr, "Compiling...\n");
+    Utility::log("Compiling...\n", Utility::Log::E_DISPLAY);
     if (Utility::compileTheseFiles(files))
     {
-        fprintf(stderr, "Compilation Completed.\n");
+        Utility::log("Compilation Completed.\n", Utility::Log::E_WARNING);
     }
     else
     {
-        fprintf(stderr, "Compilation Failed!\n");
+        Utility::log("Compilation Failed!\n", Utility::Log::E_ERROR);
     };
     return 0;
 };
